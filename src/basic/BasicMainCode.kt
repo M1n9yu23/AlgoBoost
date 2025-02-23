@@ -2,12 +2,22 @@ package basic
 
 class BasicMainCode {
 
-    // 세균 증식
     companion object{
-        fun solution(n: Int, t: Int): Int = n shl t
+        fun solution(my_string: String, letter: String): String {
+            var result = ""
+            val letterChar = letter[0]
+
+            for(i in my_string.indices){
+                if(my_string[i] != letterChar) {
+                    result += my_string[i]
+                }
+            }
+
+            return result
+        }
     }
 }
 
 fun main(){
-    println(BasicMainCode.solution(2,10))
+    println(BasicMainCode.solution("abcdef", "f"))
 }
