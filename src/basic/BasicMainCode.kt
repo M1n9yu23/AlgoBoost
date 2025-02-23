@@ -2,12 +2,12 @@ package basic
 
 class BasicMainCode {
 
-    // 편지
+    // 세균 증식
     companion object{
-        fun solution(message: String): Int = message.length * 2
+        fun solution(n: Int, t: Int): Int = n shl t
     }
 }
 
 fun main(){
-    println(BasicMainCode.solution("I love you~"))
+    println(BasicMainCode.solution(2,10))
 }
