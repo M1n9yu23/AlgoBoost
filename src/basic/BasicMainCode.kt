@@ -3,10 +3,13 @@ package basic
 class BasicMainCode {
 
     companion object{
-        fun solution(n: Int) = if (n % 2 == 0) (1..n).filter { it % 2 == 0 }.sumOf { it * it } else (1..n).filter { it % 2 != 0 }.sum()
+        fun solution(a: Int, b: Int, flag: Boolean) = when(flag) {
+            true -> a + b
+            false -> a - b
+        }
     }
 }
 
 fun main(){
-    println(BasicMainCode.solution(10))
+    println(BasicMainCode.solution(-4,7,true))
 }
