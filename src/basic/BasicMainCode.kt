@@ -3,10 +3,10 @@ package basic
 class BasicMainCode {
 
     companion object{
-        fun solution(a: Int, b: Int) = maxOf("$a$b".toInt(), 2 * a * b)
+        fun solution(n: Int) = if (n % 2 == 0) (1..n).filter { it % 2 == 0 }.sumOf { it * it } else (1..n).filter { it % 2 != 0 }.sum()
     }
 }
 
 fun main(){
-    println(BasicMainCode.solution(91, 2))
+    println(BasicMainCode.solution(10))
 }
