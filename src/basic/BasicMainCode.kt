@@ -1,12 +1,10 @@
 package basic
 
-import kotlin.math.pow
-
 
 class BasicMainCode {
 
     companion object {
-        fun solution(num_list: IntArray) = if (num_list.reduce { acc, num -> acc * num } < num_list.sum().let { it * it }) 1 else 0
+        fun solution(num_list: IntArray) = num_list.filter { it % 2 == 0 }.joinToString("").toInt() + num_list.filter { it % 2 != 0 }.joinToString("").toInt()
     }
 }
 
