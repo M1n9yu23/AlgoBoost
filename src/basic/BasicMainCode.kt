@@ -6,20 +6,10 @@ import kotlin.math.pow
 class BasicMainCode {
 
     companion object {
-        fun solution(a: Int, b: Int, c: Int): Int {
-            val dice = listOf(a, b, c)
-            val x2 = dice.sumOf { it * it }
-            val x3 = dice.sumOf { it * it * it}
-            val sum = dice.sum()
-            return when (dice.toSet().size) {
-                1 -> sum * x2 * x3
-                2 -> sum * x2
-                else -> sum
-            }
-        }
+        fun solution(num_list: IntArray) = if (num_list.reduce { acc, num -> acc * num } < num_list.sum().let { it * it }) 1 else 0
     }
 }
 
 fun main() {
-    println(BasicMainCode.solution(4, 4, 4))
+    println(BasicMainCode.solution(intArrayOf(3,4,5,2,1)))
 }
