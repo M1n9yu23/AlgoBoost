@@ -3,13 +3,24 @@ package basic
 class BasicMainCode {
 
     companion object{
-        fun solution(a: Int, b: Int, flag: Boolean) = when(flag) {
-            true -> a + b
-            false -> a - b
+        fun solution(code: String): String {
+            var mode = 0
+            var result = ""
+
+            code.forEachIndexed { index, char ->
+                when {
+                    char == '1' -> mode = 1 - mode
+                    (mode == 0 && index % 2 == 0) || (mode == 1 && index % 2 != 0) -> {
+                        result = result.plus(char)
+                    }
+                }
+            }
+
+            return if (result.isEmpty()) "EMPTY" else result
         }
     }
 }
 
 fun main(){
-    println(BasicMainCode.solution(-4,7,true))
+    println(BasicMainCode.solution("abc1abc1abc"))
 }
