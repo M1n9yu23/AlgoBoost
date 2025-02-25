@@ -3,24 +3,22 @@ package basic
 class BasicMainCode {
 
     companion object{
-        fun solution(code: String): String {
-            var mode = 0
-            var result = ""
+        fun solution(a: Int, d: Int, included: BooleanArray): Int {
+            var sum = 0
+            var current = a
 
-            code.forEachIndexed { index, char ->
-                when {
-                    char == '1' -> mode = 1 - mode
-                    (mode == 0 && index % 2 == 0) || (mode == 1 && index % 2 != 0) -> {
-                        result = result.plus(char)
-                    }
+            for(isIncluded in included) {
+                if(isIncluded) {
+                    sum += current
                 }
+                current += d
             }
 
-            return if (result.isEmpty()) "EMPTY" else result
+            return sum
         }
     }
 }
 
 fun main(){
-    println(BasicMainCode.solution("abc1abc1abc"))
+    println(BasicMainCode.solution(3,4, booleanArrayOf(true, false, false, true, true)))
 }
