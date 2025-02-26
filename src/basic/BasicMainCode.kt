@@ -4,15 +4,22 @@ package basic
 class BasicMainCode {
 
     companion object {
-        fun solution(num_list: IntArray): IntArray {
-            val last = num_list.last()
-            val lastPrev = num_list[num_list.size - 2]
+        fun solution(n: Int, control: String): Int {
+            var num = n
+            control.forEach {
+                when(it){
+                    'w' -> num++
+                    's' -> num--
+                    'd' -> num += 10
+                    'a' -> num -= 10
+                }
+            }
 
-            return num_list + if(last > lastPrev) last - lastPrev else last * 2
+            return num
         }
     }
 }
 
 fun main() {
-    println(BasicMainCode.solution(intArrayOf(2,1,6)).toList())
+    println(BasicMainCode.solution(0, "wsdawsdassw"))
 }
