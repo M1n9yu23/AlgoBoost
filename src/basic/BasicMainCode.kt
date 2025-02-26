@@ -1,22 +1,30 @@
 package basic
 
+import javax.management.QueryExp
+
 
 class BasicMainCode {
 
     companion object {
-        fun solution(numLog: IntArray): String = numLog.mapIndexed { i, num ->
-            if (i == 0) ""
-            else when (num - numLog[i - 1]) {
-                1 -> 'w'
-                -1 -> 's'
-                10 -> 'd'
-                -10 -> 'a'
-                else -> ""
+        fun solution(arr: IntArray, queries: Array<IntArray>): IntArray {
+            queries.forEach {
+                val (i, j) = it
+                val temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
             }
-        }.joinToString("")
+
+            return arr
+        }
     }
 }
 
 fun main() {
-    println(BasicMainCode.solution(intArrayOf(0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1)))
+    val arr = intArrayOf(0, 1, 2, 3, 4)
+    val queries = arrayOf(
+        intArrayOf(0, 3),
+        intArrayOf(1, 2),
+        intArrayOf(1, 4)
+    )
+    println(BasicMainCode.solution(arr, queries).joinToString(", "))
 }
