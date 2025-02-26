@@ -1,30 +1,40 @@
 package basic
 
-import javax.management.QueryExp
+import jdk.internal.org.jline.utils.Colors.s
 
 
 class BasicMainCode {
 
     companion object {
         fun solution(arr: IntArray, queries: Array<IntArray>): IntArray {
-            queries.forEach {
-                val (i, j) = it
-                val temp = arr[i]
-                arr[i] = arr[j]
-                arr[j] = temp
+
+            val answer = IntArray(queries.size) { -1 }
+
+            queries.forEachIndexed { index, (s, e, k) ->
+                var min = Int.MAX_VALUE
+
+                for (i in s..e) {
+                    if (arr[i] > k && arr[i] < min) {
+                        min = arr[i]
+                    }
+                }
+
+                if (min != Int.MAX_VALUE) {
+                    answer[index] = min
+                }
             }
 
-            return arr
+            return answer
         }
     }
 }
 
 fun main() {
-    val arr = intArrayOf(0, 1, 2, 3, 4)
+    val arr = intArrayOf(0, 1, 2, 4, 3)
     val queries = arrayOf(
-        intArrayOf(0, 3),
-        intArrayOf(1, 2),
-        intArrayOf(1, 4)
+        intArrayOf(0, 4, 2),
+        intArrayOf(0, 3, 2),
+        intArrayOf(0, 2, 2)
     )
     println(BasicMainCode.solution(arr, queries).joinToString(", "))
 }
