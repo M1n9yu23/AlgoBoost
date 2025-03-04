@@ -3,21 +3,22 @@ package basic
 class BasicMainCode {
 
     companion object {
-        fun solution(n: Int): IntArray {
-            var x = n
-            val arr = mutableListOf<Int>()
-            while(true) {
-                arr.add(x)
-                if(x == 1) break
-                x = if(x % 2 == 0) x / 2 else 3 * x + 1
+        fun solution(arr: IntArray): IntArray {
+            val stk = ArrayDeque<Int>()
+
+            for (num in arr) {
+                while (stk.isNotEmpty() && stk.last() >= num) {
+                    stk.removeLast()
+                }
+                stk.addLast(num)
             }
 
-            return arr.toIntArray()
+            return stk.toIntArray()
         }
     }
 }
 
 fun main() {
 
-    println(BasicMainCode.solution(10).joinToString(","))
+    println(BasicMainCode.solution(intArrayOf(1,4,2,5,3)).joinToString(","))
 }
