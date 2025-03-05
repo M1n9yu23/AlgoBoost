@@ -3,22 +3,11 @@ package basic
 class BasicMainCode {
 
     companion object {
-        fun solution(arr: IntArray): IntArray {
-            val stk = ArrayDeque<Int>()
-
-            for (num in arr) {
-                while (stk.isNotEmpty() && stk.last() >= num) {
-                    stk.removeLast()
-                }
-                stk.addLast(num)
-            }
-
-            return stk.toIntArray()
-        }
+        fun solution(x1: Boolean, x2: Boolean, x3: Boolean, x4: Boolean) = (x1 || x2) && (x3 || x4)
     }
 }
 
 fun main() {
 
-    println(BasicMainCode.solution(intArrayOf(1,4,2,5,3)).joinToString(","))
+    println(BasicMainCode.solution(true,false,false,false))
 }
